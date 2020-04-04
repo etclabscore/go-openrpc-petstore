@@ -29,6 +29,9 @@
     </option>
   </component>
   <component name="GOROOT" path="$USER_HOME$/go1.13.5.linux-amd64/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1a4cMCcgg86Yw7UtsA6rLfhlm5T" />
   <component name="ProjectViewState">
     <option name="foldersAlwaysOnTop" value="false" />
@@ -67,6 +70,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="1232" height="404" key="GridCell.Tab.0.bottom" timestamp="1586002254243">
+      <screen x="4920" y="1185" width="2560" height="1440" />
+    </state>
+    <state width="1232" height="404" key="GridCell.Tab.0.bottom/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@4920.1185.2560.1440" timestamp="1586002254243" />
+    <state width="1232" height="404" key="GridCell.Tab.0.center" timestamp="1586002254243">
+      <screen x="4920" y="1185" width="2560" height="1440" />
+    </state>
+    <state width="1232" height="404" key="GridCell.Tab.0.center/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@4920.1185.2560.1440" timestamp="1586002254243" />
+    <state width="1232" height="404" key="GridCell.Tab.0.left" timestamp="1586002254243">
+      <screen x="4920" y="1185" width="2560" height="1440" />
+    </state>
+    <state width="1232" height="404" key="GridCell.Tab.0.left/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@4920.1185.2560.1440" timestamp="1586002254243" />
+    <state width="1232" height="404" key="GridCell.Tab.0.right" timestamp="1586002254243">
+      <screen x="4920" y="1185" width="2560" height="1440" />
+    </state>
+    <state width="1232" height="404" key="GridCell.Tab.0.right/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@4920.1185.2560.1440" timestamp="1586002254243" />
     <state x="5223" y="1540" width="672" height="678" key="search.everywhere.popup" timestamp="1586001999321">
       <screen x="4920" y="1185" width="2560" height="1440" />
     </state>
