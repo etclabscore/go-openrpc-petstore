@@ -10,6 +10,7 @@ type PetStoreService struct {
 	pets []*Pet
 }
 
+
 // GetPets returns all the pets the store has.
 func (s *PetStoreService) GetPets() ([]*Pet, error) {
 	// Returns all pets.
