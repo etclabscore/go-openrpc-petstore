@@ -6,19 +6,19 @@ type Pet struct {
 	Fluffy, Fast bool
 }
 
-type PetStoreService struct {
+type PetStoreEthereumService struct {
 	pets []*Pet
 }
 
 
 // GetPets returns all the pets the store has.
-func (s *PetStoreService) GetPets() ([]*Pet, error) {
+func (s *PetStoreEthereumService) GetPets() ([]*Pet, error) {
 	// Returns all pets.
 	return s.pets, nil
 }
 
 // AddPet adds a pet to the store.
-func (s *PetStoreService) AddPet(p Pet) error {
+func (s *PetStoreEthereumService) AddPet(p Pet) error {
 	if s.pets == nil {
 		s.pets = []*Pet{}
 	}
