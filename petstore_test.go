@@ -1,4 +1,4 @@
-package wrap
+package petstore
 
 import (
 	"encoding/json"
@@ -6,8 +6,8 @@ import (
 	"net"
 	"testing"
 	"time"
-
 	"github.com/ethereum/go-ethereum/rpc"
+	openRRPCDoc "github.com/etclabscore/openrpc-go-document"
 )
 
 const maxReadSize = 1024 * 1024
@@ -63,14 +63,14 @@ func TestGetPets(t *testing.T) {
 	}
 
 	// Pick from available options.
-	opts := &rpc.DocumentDiscoverOpts{
+	opts := &openRPCDoc.DocumentDiscoverOpts{
 		Inline:          false,
-		SchemaMutations: []rpc.MutateType{rpc.SchemaMutateType_Expand, rpc.SchemaMutateType_RemoveDefinitions},
+		SchemaMutations: []openRPCDoc.MutateType{openRPCDoc.SchemaMutateType_Expand, openRPCDoc.SchemaMutateType_RemoveDefinitions},
 		MethodBlackList: []string{"^rpc_.*"},
 	}
 
 	// Get a Document service type wrapped around the server.
-	doc := rpc.Wrap(server, opts)
+	doc := openRPCDoc.Wrap(server, opts)
 
 	// Register the DocumentService as a service receiver.
 	err = server.RegisterReceiverWithName("rpc", doc)

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f6affd4-3811-4cf6-a86b-b31b15aad236" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wrap.go" beforeDir="false" afterPath="$PROJECT_DIR$/wrap.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wrap_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/wrap_test.go" afterDir="false" />
-    </list>
+    <list default="true" id="4f6affd4-3811-4cf6-a86b-b31b15aad236" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,8 +55,18 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RunManager" selected="Go Test.TestGetPets in wrap_test.go">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="openrpc-go-petstore" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/" />
+      <package value="github.com/whilei/thyself" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestGetPets in wrap_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="thyself" />
+      <module name="openrpc-go-petstore" />
       <working_directory value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <kind value="FILE" />
@@ -70,8 +75,19 @@
       <pattern value="^TestGetPets$" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="openrpc-go-petstore" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <package value="github.com/whilei/thyself" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
     <configuration name="wrap_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="thyself" />
+      <module name="openrpc-go-petstore" />
       <working_directory value="$PROJECT_DIR$" />
       <go_parameters value="-v " />
       <framework value="gotest" />
@@ -106,25 +122,25 @@
       <screen x="4920" y="1185" width="2560" height="1440" />
     </state>
     <state x="5026" y="1629" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@4920.1185.2560.1440" timestamp="1586013597726" />
-    <state width="741" height="1283" key="GridCell.Tab.0.bottom" timestamp="1586019344767">
+    <state width="741" height="1283" key="GridCell.Tab.0.bottom" timestamp="1586020251767">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="741" height="1283" key="GridCell.Tab.0.bottom/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@0.0.1920.1080" timestamp="1586019344767" />
+    <state width="741" height="1283" key="GridCell.Tab.0.bottom/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@0.0.1920.1080" timestamp="1586020251767" />
     <state width="893" height="1376" key="GridCell.Tab.0.bottom/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@4920.1185.2560.1440" timestamp="1586018050858" />
-    <state width="741" height="1283" key="GridCell.Tab.0.center" timestamp="1586019344767">
+    <state width="741" height="1283" key="GridCell.Tab.0.center" timestamp="1586020251767">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="741" height="1283" key="GridCell.Tab.0.center/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@0.0.1920.1080" timestamp="1586019344767" />
+    <state width="741" height="1283" key="GridCell.Tab.0.center/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@0.0.1920.1080" timestamp="1586020251767" />
     <state width="893" height="1376" key="GridCell.Tab.0.center/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@4920.1185.2560.1440" timestamp="1586018050858" />
-    <state width="741" height="1283" key="GridCell.Tab.0.left" timestamp="1586019344767">
+    <state width="741" height="1283" key="GridCell.Tab.0.left" timestamp="1586020251767">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="741" height="1283" key="GridCell.Tab.0.left/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@0.0.1920.1080" timestamp="1586019344767" />
+    <state width="741" height="1283" key="GridCell.Tab.0.left/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@0.0.1920.1080" timestamp="1586020251767" />
     <state width="893" height="1376" key="GridCell.Tab.0.left/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@4920.1185.2560.1440" timestamp="1586018050857" />
-    <state width="741" height="1283" key="GridCell.Tab.0.right" timestamp="1586019344767">
+    <state width="741" height="1283" key="GridCell.Tab.0.right" timestamp="1586020251767">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="741" height="1283" key="GridCell.Tab.0.right/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@0.0.1920.1080" timestamp="1586019344767" />
+    <state width="741" height="1283" key="GridCell.Tab.0.right/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@0.0.1920.1080" timestamp="1586020251767" />
     <state width="893" height="1376" key="GridCell.Tab.0.right/0.0.1920.1080/4920.1185.2560.1440/1080.1080.3840.2160/0.1080.1080.1920@4920.1185.2560.1440" timestamp="1586018050858" />
     <state width="1232" height="180" key="GridCell.Tab.1.bottom" timestamp="1586017141524">
       <screen x="4920" y="1185" width="2560" height="1440" />

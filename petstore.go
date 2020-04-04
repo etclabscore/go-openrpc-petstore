@@ -1,4 +1,4 @@
-package wrap
+package petstore
 
 type Pet struct {
 	Name         string
