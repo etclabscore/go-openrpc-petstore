@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/rpc"
-	openrRPCDocument "github.com/etclabscore/openrpc-go-document"
+	openRPCDoc "github.com/etclabscore/openrpc-go-document"
 )
 
 const maxReadSize = 1024 * 1024
@@ -24,7 +24,7 @@ var store = &PetStoreService{
 }
 
 type MyOpenRPCService struct{
-	openRPCDocument *openrRPCDocument.Document
+	openRPCDocument *openRPCDoc.Document
 }
 func (m *MyOpenRPCService) MustDiscover() (res map[string]interface{}, err error) {
 	out, err := m.openRPCDocument.Discover()
@@ -58,7 +58,7 @@ func TestGetPets(t *testing.T) {
 
 	// Register the store service with the server, just like usual
 	// for go-ethereum/rpc
-	err := server.RegisterReceiverWithName("store", store)
+	err := server.RegisterName("store", store)
 	if err != nil {
 		t.Fatal(err)
 	}
