@@ -6,8 +6,9 @@ import (
 	"net"
 	"testing"
 	"time"
+
 	"github.com/ethereum/go-ethereum/rpc"
-	openRRPCDoc "github.com/etclabscore/openrpc-go-document"
+	openrRPCDocument "github.com/etclabscore/openrpc-go-document"
 )
 
 const maxReadSize = 1024 * 1024
@@ -23,7 +24,7 @@ var store = &PetStoreService{
 }
 
 type MyOpenRPCService struct{
-	openRPCDocument *rpc.Document
+	openRPCDocument *openrRPCDocument.Document
 }
 func (m *MyOpenRPCService) MustDiscover() (res map[string]interface{}, err error) {
 	out, err := m.openRPCDocument.Discover()
