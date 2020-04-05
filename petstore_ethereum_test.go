@@ -9,6 +9,7 @@ import (
 
 	openRPCDoc "github.com/etclabscore/openrpc-go-document"
 	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/go-openapi/spec"
 )
 
 const maxReadSize = 1024 * 1024
@@ -65,13 +66,25 @@ func TestRPCDocument_EthereumRPC(t *testing.T) {
 
 	// Pick from available options.
 	opts := &openRPCDoc.DocumentDiscoverOpts{
+
 		Inline:          false,
-		SchemaMutations: []openRPCDoc.MutateType{openRPCDoc.SchemaMutateType_Expand, openRPCDoc.SchemaMutateType_RemoveDefinitions},
+		SchemaMutationFns: []func(*spec.Schema) error{
+			openRPCDoc.SchemaMutationExpand,
+			openRPCDoc.SchemaMutationRemoveDefinitionsField,
+		},
+		//TypeMapper: func(r reflect.Type) *jsonschema.Type {
+		//	return nil
+		//},
+		//IgnoredTypes: []interface{}{new(error)},
 		MethodBlackList: []string{"^rpc_.*"},
 	}
 
 	// Get a Document service type wrapped around the server.
-	doc := openRPCDoc.Wrap(server, opts)
+	doc := openRPCDoc.Wrap(&openRPCDoc.ServerProvider{
+		Methods:             server.Methods,
+		OpenRPCInfo:         server.OpenRPCInfo,
+		OpenRPCExternalDocs: server.OpenRPCExternalDocs,
+	}, opts)
 
 	// Register the DocumentService as a service receiver.
 	err = server.RegisterReceiverWithName("rpc", doc)

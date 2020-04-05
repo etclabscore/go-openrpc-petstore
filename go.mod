@@ -7,8 +7,9 @@ require github.com/ethereum/go-ethereum v1.9.12
 require (
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
 	github.com/alecthomas/jsonschema v0.0.2
-	github.com/etclabscore/openrpc-go-document v0.0.7
+	github.com/etclabscore/openrpc-go-document v0.0.8
 	github.com/go-ole/go-ole v1.2.4 // indirect
+	github.com/go-openapi/spec v0.19.7
 	github.com/gregdhill/go-openrpc v0.0.1
 	github.com/rs/xhandler v0.0.0-20170707052532-1eb70cf1520d // indirect
 	github.com/steakknife/hamming v0.0.0-20180906055917-c99c65617cd3 // indirect
@@ -16,7 +17,7 @@ require (
 
 replace github.com/ethereum/go-ethereum => github.com/meowsbits/core-geth v1.10.0-core.0.20200404194932-7af048e1a645
 
-replace github.com/etclabscore/openrpc-go-document => github.com/meowsbits/openrpc-go-document v0.0.7
+replace github.com/etclabscore/openrpc-go-document => /home/ia/dev/etclabscore/openrpc-go-document
 
 replace github.com/alecthomas/jsonschema => github.com/meowsbits/jsonschema v0.0.2
 
