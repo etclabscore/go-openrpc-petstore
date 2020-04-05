@@ -47,7 +47,7 @@ func (m *MyOpenRPCService) MustDiscover() (res map[string]interface{}, err error
 
 func (m *MyOpenRPCService) MethodNames() ([]string, error) {
 	out := []string{}
-	for _, m := range m.openRPCDocument.Document().Methods {
+	for _, m := range m.openRPCDocument.Spec1().Methods {
 		out = append(out, m.Name)
 	}
 	return out, nil
@@ -65,7 +65,7 @@ func TestRPCDocument_EthereumRPC(t *testing.T) {
 	}
 
 	// Pick from available options.
-	opts := &openRPCDoc.DocumentDiscoverOpts{
+	opts := &openRPCDoc.DocumentProviderParseOpts{
 
 		Inline:          false,
 		SchemaMutationFns: []func(*spec.Schema) error{
@@ -75,13 +75,13 @@ func TestRPCDocument_EthereumRPC(t *testing.T) {
 		//TypeMapper: func(r reflect.Type) *jsonschema.Type {
 		//	return nil
 		//},
-		//IgnoredTypes: []interface{}{new(error)},
+		//SchemaIgnoredTypes: []interface{}{new(error)},
 		MethodBlackList: []string{"^rpc_.*"},
 	}
 
-	// Get a Document service type wrapped around the server.
-	doc := openRPCDoc.Wrap(&openRPCDoc.ServerProvider{
-		Methods:             server.Methods,
+	// Get a Spec1 service type wrapped around the server.
+	doc := openRPCDoc.DocumentProvider(&openRPCDoc.ServerProvider{
+		Callbacks:           server.Methods,
 		OpenRPCInfo:         server.OpenRPCInfo,
 		OpenRPCExternalDocs: server.OpenRPCExternalDocs,
 	}, opts)
@@ -92,7 +92,7 @@ func TestRPCDocument_EthereumRPC(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	// Or, use a different service pattern to configure the endpoint using the OpenRPC Document instance.
+	// Or, use a different service pattern to configure the endpoint using the OpenRPC Spec1 instance.
 	myService := &MyOpenRPCService{openRPCDocument:doc}
 	err = server.RegisterReceiverWithName("mine", myService)
 	if err != nil {

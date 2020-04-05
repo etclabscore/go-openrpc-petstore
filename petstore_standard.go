@@ -85,15 +85,15 @@ var errorType = reflect.TypeOf((*error)(nil)).Elem()
 
 func (s *PetStoreStdService) Discover(args StandardDiscoverArgs, response *StandardDiscoverRes) error {
 
-	doc := openrpc_go_document.Wrap(
+	doc := openrpc_go_document.DocumentProvider(
 
 		// Server provider definitions.
 		&openrpc_go_document.ServerProvider{
-			Methods: openrpc_go_document.GoRPCServiceMethods(s),
+			Callbacks: openrpc_go_document.GoRPCServiceMethods(s),
 			OpenRPCInfo: func() types.Info {
 				return types.Info{
 					Title:          "Test service for pet store",
-					Description:    "Which is starting to seem like an actually kind of barbaric thing to have computers involved with...",
+					Description:    "Which is starting to seem like a sort of barbaric thing to have computers involved with...",
 					TermsOfService: "Great risk, great reward.",
 					Contact:        types.Contact{},
 					License:        types.License{},
@@ -106,22 +106,37 @@ func (s *PetStoreStdService) Discover(args StandardDiscoverArgs, response *Stand
 		},
 
 		// Set from options from default or roll your own.
-		&openrpc_go_document.DocumentDiscoverOpts{
+		&openrpc_go_document.DocumentProviderParseOpts{
 			Inline: false,
 			SchemaMutationFns: []func(*spec.Schema) error{
 				openrpc_go_document.SchemaMutationExpand,
 				openrpc_go_document.SchemaMutationRemoveDefinitionsField,
 			},
+			ContentDescriptorMutationFns: []func(isArgs bool, index int, cd *types.ContentDescriptor) {
+
+			},
 			TypeMapper: func(r reflect.Type) *jsonschema.Type {
 				return nil
 			},
-			IgnoredTypes: []interface{}{new(error)},
+			SchemaIgnoredTypes: []interface{}{new(error)},
+			ContentDescriptorSkipFn: func(isArgs bool, cd *types.ContentDescriptor) bool {
+				return false
+			},
 		})
 
 	if doc == nil {
 		log.Fatal("doc is nil")
 	}
+	/*
+	Post-parse utility methods... ?
 
+	doc.Inline()
+	doc.FlattenContentDescriptors()
+	doc.FlattenSchemas()
+	doc.ForEachContentDescriptor(func(cd *goopenrpcT.ContentDescriptor)
+	doc.ForEachSchema(func(s *spec.Schema) error)
+	doc.Spec1()
+	 */
 	out, err := doc.Discover()
 	if err != nil {
 		return err
