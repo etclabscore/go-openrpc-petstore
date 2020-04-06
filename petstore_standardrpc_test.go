@@ -36,7 +36,7 @@ var errorType = reflect.TypeOf((*error)(nil)).Elem()
 func (s *PetStoreStandardRPCService) Discover(args StandardDiscoverArgs, response *StandardDiscoverRes) error {
 
 	doc := openrpc_go_document.DocumentProvider(
-		openrpc_go_document.DefaultGoRPCServiceProvider(s),
+		openrpc_go_document.DefaultStandardRPCServiceProvider(s),
 		openrpc_go_document.DefaultParseOptions(),
 	)
 

@@ -117,7 +117,7 @@ func TestRPCDocument_EthereumRPCExtendedService(t *testing.T) {
 	// Get a Spec1 service type wrapped around the server.
 	doc := openRPCDoc.DocumentProvider(
 		&openRPCDoc.ServerProviderService{
-			ServiceCallbacks:           openRPCDoc.DefaultSuitableCallbacksEthereum(store),
+			ServiceCallbacks:           openRPCDoc.DefaultServiceCallbacksEthereum(store),
 			ServiceOpenRPCInfo:         func() goopenrpcT.Info { return goopenrpcT.Info{} },
 			ServiceOpenRPCExternalDocs: func() *goopenrpcT.ExternalDocs { return nil },
 		},
