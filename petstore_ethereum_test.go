@@ -27,12 +27,14 @@ var store = &PetStoreEthereumService{
 type MyOpenRPCService struct{
 	openRPCDocument *openRPCDoc.Document
 }
+
+// Wrapper service that can be used to extend metadata services.
 func (m *MyOpenRPCService) MustDiscover() (res map[string]interface{}, err error) {
-	out, err := m.openRPCDocument.Discover()
+	err = m.openRPCDocument.Discover()
 	if err != nil {
 		return nil ,err
 	}
-	marshaled, err := json.MarshalIndent(out, "", "  ")
+	marshaled, err := json.MarshalIndent(m.openRPCDocument.Spec1(), "", "  ")
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +69,6 @@ func TestRPCDocument_EthereumRPC(t *testing.T) {
 	// Pick from available options.
 	opts := &openRPCDoc.DocumentProviderParseOpts{
 
-		Inline:          false,
 		SchemaMutationFns: []func(*spec.Schema) error{
 			openRPCDoc.SchemaMutationExpand,
 			openRPCDoc.SchemaMutationRemoveDefinitionsField,
@@ -79,9 +80,10 @@ func TestRPCDocument_EthereumRPC(t *testing.T) {
 		MethodBlackList: []string{"^rpc_.*"},
 	}
 
+
 	// Get a Spec1 service type wrapped around the server.
 	doc := openRPCDoc.DocumentProvider(&openRPCDoc.ServerProvider{
-		Callbacks:           server.Methods,
+		Callbacks:           openRPCDoc.DefaultSuitableCallbacksEthereum(store),
 		OpenRPCInfo:         server.OpenRPCInfo,
 		OpenRPCExternalDocs: server.OpenRPCExternalDocs,
 	}, opts)

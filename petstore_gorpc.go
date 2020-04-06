@@ -107,7 +107,6 @@ func (s *PetStoreStdService) Discover(args StandardDiscoverArgs, response *Stand
 
 		// Set from options from default or roll your own.
 		&openrpc_go_document.DocumentProviderParseOpts{
-			Inline: false,
 			SchemaMutationFns: []func(*spec.Schema) error{
 				openrpc_go_document.SchemaMutationExpand,
 				openrpc_go_document.SchemaMutationRemoveDefinitionsField,
@@ -119,7 +118,7 @@ func (s *PetStoreStdService) Discover(args StandardDiscoverArgs, response *Stand
 				return nil
 			},
 			SchemaIgnoredTypes: []interface{}{new(error)},
-			ContentDescriptorSkipFn: func(isArgs bool, cd *types.ContentDescriptor) bool {
+			ContentDescriptorSkipFn: func(isArgs bool, inedex int, cd *types.ContentDescriptor) bool {
 				return false
 			},
 		})
@@ -137,12 +136,12 @@ func (s *PetStoreStdService) Discover(args StandardDiscoverArgs, response *Stand
 	doc.ForEachSchema(func(s *spec.Schema) error)
 	doc.Spec1()
 	 */
-	out, err := doc.Discover()
+	err := doc.Discover()
 	if err != nil {
 		return err
 	}
 
-	b, err := json.Marshal(out)
+	b, err := json.Marshal(doc.Spec1())
 	if err != nil {
 		return err
 	}
