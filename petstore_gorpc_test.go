@@ -71,8 +71,10 @@ func TestRPCDocument_RPC(t *testing.T) {
 	//we got our result in result
 	fmt.Printf("args=%v res=%v\n", args, result)
 
+
 	r := make(map[string]interface{})
 	discoverRes := StandardDiscoverRes(r)
+
 	err = client.Call("petstore.Discover", "", &discoverRes)
 	if err != nil {
 		t.Fatal(err)
