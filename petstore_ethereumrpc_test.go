@@ -15,15 +15,14 @@ import (
 
 const maxReadSize = 1024 * 1024
 
-var store = &PetStoreEthereumService{
-	pets: []*Pet{
-		{
-			Name:   "Lindy",
-			Age:    7,
-			Fluffy: true,
-		},
+var store = &PetStore{pets: []*Pet{
+	{
+		Name:   "Fluffy",
+		Age:    14,
+		Fluffy: true,
+		Fast:   false,
 	},
-}
+}}
 
 func TestRPCDocument_EthereumRPC(t *testing.T) {
 	server := rpc.NewServer()
@@ -40,7 +39,7 @@ func TestRPCDocument_EthereumRPC(t *testing.T) {
 	doc := openRPCDoc.DocumentProvider(
 		openRPCDoc.DefaultEthereumServiceProvider(store),
 		openRPCDoc.DefaultEthereumParseOptions(),
-		)
+	)
 
 	doc.Discover()
 
