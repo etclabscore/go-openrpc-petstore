@@ -17,7 +17,7 @@
     },
     "termsOfService": "https://google.com/rtfm",
     "title": "My Ethereum-Style Petstore Service",
-    "version": "v0.0.0-beta-2020-04-08T12:15:03-05:00-1586366103"
+    "version": "v0.0.0-beta-2020-04-08T12:22:37-05:00-1586366557"
   },
   "methods": [
     {
@@ -89,7 +89,7 @@
       "result": {
         "deprecated": false,
         "description": "```go\n\n```",
-        "name": "\u0026{%!s(token.Pos=263) \u003cnil\u003e %!s(*ast.StarExpr=\u0026{265 0xc000185c00})}",
+        "name": "\u0026{%!s(token.Pos=263) \u003cnil\u003e %!s(*ast.StarExpr=\u0026{265 0xc000192560})}",
         "required": true,
         "schema": {
           "oneOf": [
