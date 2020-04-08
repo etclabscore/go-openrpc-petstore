@@ -8,11 +8,11 @@ type PetStoreStandardRPCService struct {
 	store *PetStore
 }
 
-type GetPetsArgs string
+type GetPetsArg string
 type GetPetsRes []*Pet
 
-// GetPets returns all the pets the store has.
-func (s *PetStoreStandardRPCService) GetPets(args GetPetsArgs, response *GetPetsRes) error {
+// GetPets returns all the pets the petStoreService has.
+func (s *PetStoreStandardRPCService) GetPets(arg GetPetsArg, response *GetPetsRes) error {
 	res, err := s.store.GetPets()
 	if err != nil {
 		return err
@@ -25,12 +25,31 @@ func (s *PetStoreStandardRPCService) GetPets(args GetPetsArgs, response *GetPets
 type AddPetArg Pet
 type AddPetRes Pet
 
-// AddPet adds a pet to the store.
-func (s *PetStoreStandardRPCService) AddPet(p AddPetArg, response *AddPetRes) (err error) {
-	err = s.store.AddPet(Pet(p))
+// AddPet adds a pet to the petStoreService.
+func (s *PetStoreStandardRPCService) AddPet(arg AddPetArg, response *AddPetRes) (err error) {
+	err = s.store.AddPet(Pet(arg))
 	if err != nil {
 		return err
 	}
-	response = (*AddPetRes)(&p)
+	response = (*AddPetRes)(&arg)
+	return nil
+}
+
+type RegisterPetOwnerArgs struct {
+	OwnerName string
+	Pet Pet
+}
+
+type RegisteredPetOwner struct {
+	OwnerName string
+	NewPet Pet
+}
+type RegisterPetOwnerRes struct {}
+
+// RegisterPetOwner registers a pet to an owner.
+func (s *PetStoreStandardRPCService) RegisterPetOwner(args RegisterPetOwnerArgs, res *RegisterPetOwnerRes) error {
+
+	s.store.RegisterPetOwner(args.OwnerName, args.Pet)
+
 	return nil
 }

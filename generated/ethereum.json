@@ -1,0 +1,263 @@
+{
+  "components": {},
+  "externalDocs": {
+    "description": "GPLv3",
+    "url": "https://github.com/ethereum/go-ethereum/blob/COPYING.md"
+  },
+  "info": {
+    "contact": {
+      "email": "",
+      "name": "",
+      "url": ""
+    },
+    "description": "Oooohhh!",
+    "license": {
+      "name": "",
+      "url": ""
+    },
+    "termsOfService": "https://google.com/rtfm",
+    "title": "My Ethereum-Style Petstore Service",
+    "version": "v0.0.0-beta-2020-04-08T12:15:03-05:00-1586366103"
+  },
+  "methods": [
+    {
+      "deprecated": false,
+      "description": "```go\n// AddPet adds a pet to the petStoreService.\nfunc (s *PetStore) AddPet(newPet Pet) error {\n\tif s.pets == nil {\n\t\ts.pets = []*Pet{}\n\t}\n\ts.pets = append(s.pets, \u0026newPet)\n\treturn nil\n}\n```",
+      "errors": [],
+      "examples": [],
+      "externalDocs": {
+        "description": "line=24",
+        "url": "file:///home/ia/dev/whilei/openrpc-go-petstore/petstore.go"
+      },
+      "links": [],
+      "name": "petStore_addPet",
+      "paramStructure": "by-position",
+      "params": [
+        {
+          "deprecated": false,
+          "description": "```go\ngithub.com/whilei/openrpc-go-petstore.Pet\n```",
+          "name": "newPet",
+          "required": true,
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "Age": {
+                "type": "integer"
+              },
+              "Fast": {
+                "type": "boolean"
+              },
+              "Fluffy": {
+                "type": "boolean"
+              },
+              "Name": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "summary": ""
+        }
+      ],
+      "result": {
+        "deprecated": false,
+        "description": "",
+        "name": "Null",
+        "required": false,
+        "schema": {
+          "type": "null"
+        },
+        "summary": ""
+      },
+      "servers": [],
+      "summary": "AddPet adds a pet to the petStoreService.\n",
+      "tags": []
+    },
+    {
+      "deprecated": false,
+      "description": "```go\n// GetPets returns all the pets the petStoreService has.\nfunc (s *PetStore) GetPets() ([]*Pet, error) {\n\n\treturn s.pets, nil\n}\n```",
+      "errors": [],
+      "examples": [],
+      "externalDocs": {
+        "description": "line=20",
+        "url": "file:///home/ia/dev/whilei/openrpc-go-petstore/petstore.go"
+      },
+      "links": [],
+      "name": "petStore_getPets",
+      "paramStructure": "by-position",
+      "params": [],
+      "result": {
+        "deprecated": false,
+        "description": "```go\n\n```",
+        "name": "\u0026{%!s(token.Pos=263) \u003cnil\u003e %!s(*ast.StarExpr=\u0026{265 0xc000185c00})}",
+        "required": true,
+        "schema": {
+          "oneOf": [
+            {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "Age": {
+                    "type": "integer"
+                  },
+                  "Fast": {
+                    "type": "boolean"
+                  },
+                  "Fluffy": {
+                    "type": "boolean"
+                  },
+                  "Name": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "summary": ""
+      },
+      "servers": [],
+      "summary": "GetPets returns all the pets the petStoreService has.\n",
+      "tags": []
+    },
+    {
+      "deprecated": false,
+      "description": "```go\n// RegisterPetOwner registers a pet owner.\nfunc (s *PetStore) RegisterPetOwner(ownerName string, pet Pet) (response Pet, err error) {\n\treturn Pet{}, nil\n}\n```",
+      "errors": [],
+      "examples": [],
+      "externalDocs": {
+        "description": "line=44",
+        "url": "file:///home/ia/dev/whilei/openrpc-go-petstore/petstore.go"
+      },
+      "links": [],
+      "name": "petStore_registerPetOwner",
+      "paramStructure": "by-position",
+      "params": [
+        {
+          "deprecated": false,
+          "description": "```go\nstring\n```",
+          "name": "ownerName",
+          "required": true,
+          "schema": {
+            "description": "string",
+            "type": "string"
+          },
+          "summary": ""
+        },
+        {
+          "deprecated": false,
+          "description": "```go\ngithub.com/whilei/openrpc-go-petstore.Pet\n```",
+          "name": "pet",
+          "required": true,
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "Age": {
+                "type": "integer"
+              },
+              "Fast": {
+                "type": "boolean"
+              },
+              "Fluffy": {
+                "type": "boolean"
+              },
+              "Name": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "summary": ""
+        }
+      ],
+      "result": {
+        "deprecated": false,
+        "description": "```go\ngithub.com/whilei/openrpc-go-petstore.Pet\n```",
+        "name": "response",
+        "required": true,
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "Age": {
+              "type": "integer"
+            },
+            "Fast": {
+              "type": "boolean"
+            },
+            "Fluffy": {
+              "type": "boolean"
+            },
+            "Name": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "summary": ""
+      },
+      "servers": [],
+      "summary": "RegisterPetOwner registers a pet owner.\n",
+      "tags": []
+    },
+    {
+      "deprecated": false,
+      "description": "```go\n// TryUpdatePet has context.Context as the first param field, which should be ignored.\n// It does not have a return value.\nfunc (s *PetStore) TryUpdatePet(ctx context.Context, pet Pet) {\n\tfor i, pet := range s.pets {\n\t\tif pet.Name == pet.Name {\n\t\t\t*s.pets[i] = *pet\n\t\t}\n\t}\n}\n```",
+      "errors": [],
+      "examples": [],
+      "externalDocs": {
+        "description": "line=34",
+        "url": "file:///home/ia/dev/whilei/openrpc-go-petstore/petstore.go"
+      },
+      "links": [],
+      "name": "petStore_tryUpdatePet",
+      "paramStructure": "by-position",
+      "params": [
+        {
+          "deprecated": false,
+          "description": "```go\ngithub.com/whilei/openrpc-go-petstore.Pet\n```",
+          "name": "pet",
+          "required": true,
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "Age": {
+                "type": "integer"
+              },
+              "Fast": {
+                "type": "boolean"
+              },
+              "Fluffy": {
+                "type": "boolean"
+              },
+              "Name": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "summary": ""
+        }
+      ],
+      "result": {
+        "deprecated": false,
+        "description": "",
+        "name": "Null",
+        "required": false,
+        "schema": {
+          "type": "null"
+        },
+        "summary": ""
+      },
+      "servers": [],
+      "summary": "TryUpdatePet has context.Context as the first param field, which should be ignored.\nIt does not have a return value.\n",
+      "tags": []
+    }
+  ],
+  "openrpc": "1.2.4",
+  "servers": []
+}

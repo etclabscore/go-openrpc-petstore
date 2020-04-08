@@ -2,69 +2,95 @@ package petstore
 
 import (
 	"encoding/json"
-	"fmt"
+	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
-	"net/rpc"
-	"reflect"
+	"net/rpc" // <--  Using the standard library RPC package.
+	"os"
+	"path/filepath"
 	"testing"
 
-	openrpc_go_document "github.com/etclabscore/openrpc-go-document"
+	openRPCDoc "github.com/etclabscore/openrpc-go-document"
 	goopenrpcT "github.com/gregdhill/go-openrpc/types"
 )
 
-var standardStoreRPCService = &PetStoreStandardRPCService{
-	store: &PetStore{pets:  []*Pet{
-		{
-			Name: "Bunny",
-			Age: 64,
-			Fluffy: true,
-		},
-	}},
+// DocService is a very thin wrapper around the Document object,
+// which we'll use to build a standard library compatible interface
+// returning the document with an arbitrary type (here, json.RawMessage).
+type DocService struct {
+	*openRPCDoc.Document
 }
 
-type StandardOpenRPCServiceProvider struct {
-	service *PetStoreStandardRPCService
-}
+type DiscoverArg string
+type DiscoverReply json.RawMessage
 
-type StandardDiscoverArgs string
-type StandardDiscoverRes map[string]interface{}
-
-var errorType = reflect.TypeOf((*error)(nil)).Elem()
-
-func (s *PetStoreStandardRPCService) Discover(args StandardDiscoverArgs, response *StandardDiscoverRes) error {
-
-	doc := openrpc_go_document.DocumentProvider(
-		openrpc_go_document.DefaultStandardRPCServiceProvider(s),
-		openrpc_go_document.DefaultParseOptions(),
-	)
-
-	if doc == nil {
-		log.Fatal("doc is nil")
-	}
-
-	err := doc.Discover()
+// Discover wraps Document.Discover in a method whose signature fulfills
+// the conventions of go standard library rpc server registration.
+func (d *DocService) Discover(arg DiscoverArg, reply *DiscoverReply) error {
+	got, err := d.Document.Discover()
 	if err != nil {
 		return err
 	}
 
-	b, err := json.Marshal(doc.Spec1())
-	if err != nil {
-		return err
-	}
+	out, err := json.MarshalIndent(got, "", "  ")
 
-	err = json.Unmarshal(b, response)
-	if err != nil {
-		return err
-	}
-	return nil
+	*reply = out
+	return err
 }
 
-func TestRPCDocument_RPC(t *testing.T) {
+func TestRPCDocument_StandardRPC(t *testing.T) {
 
 	server := rpc.NewServer()
-	err := server.RegisterName("petstore", standardStoreRPCService)
+
+	standardStoreRPCService := &PetStoreStandardRPCService{
+
+		// Populated with some fake data.
+		store: &PetStore{pets: []*Pet{
+			{
+				Name:   "Bunny",
+				Age:    64,
+				Fluffy: true,
+			},
+		}},
+	}
+
+	// Register our service.
+	err := server.RegisterName("PetStore", standardStoreRPCService)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// Server settings are top-level; one ~~server~~ API, one document.
+	//
+	// Get the server (not service!) provider default.
+	serverConfigurationP := openRPCDoc.DefaultServerServiceProvider
+
+	// Modify the server config.
+	serverConfigurationP.ServiceOpenRPCInfoFn = func() goopenrpcT.Info {
+		return goopenrpcT.Info{
+			Title:          "My Standard Service",
+			Description:    "Aaaaahh!",
+			TermsOfService: "https://google.com/rtfm",
+			Contact:        goopenrpcT.Contact{},
+			License:        goopenrpcT.License{},
+			Version:        "v0.0.0-beta",
+		}
+	}
+
+	// Create a new "reflectable" document for this server.
+	serverDoc := openRPCDoc.NewReflectDocument(serverConfigurationP)
+
+	// Get the service provider default for our RPC API style,
+	// in this case, the Go standard lib.
+	sp := openRPCDoc.StandardRPCDescriptor
+
+	// Register our receiver-based service standardService.
+	serverDoc.Reflector.RegisterReceiverWithName("PetStore", standardStoreRPCService, sp)
+
+	wrapped := &DocService{serverDoc}
+
+	err = server.RegisterName("rpc", wrapped)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -94,59 +120,57 @@ func TestRPCDocument_RPC(t *testing.T) {
 	}
 	defer client.Close()
 
-	//make arguments object
+	// Do some test RPC calls against the API.
 	args := Pet{
 		Name: "Chili",
-		Age: 3,
+		Age:  3,
 		Fast: true,
 	}
-	// This will store returned result
 	var result AddPetRes
-
-	//call remote procedure with args
-	err = client.Call("petstore.AddPet", args, &result)
+	err = client.Call("PetStore.AddPet", args, &result)
 	if err != nil {
 		t.Fatal("call error", err)
 	}
 
 	//we got our result in result
-	fmt.Printf("args=%v res=%v\n", args, result)
+	t.Logf("args=%v res=%v\n", args, result)
 
 	allPetsJSON, _ := json.MarshalIndent(standardStoreRPCService.store.pets, "", "  ")
-	fmt.Println("=> Added pet named" , result.Name, ", petstore pets state:", string(allPetsJSON))
+	t.Log("=> Added pet named", result.Name, ", petstore pets state:", string(allPetsJSON))
 
+	// Check that a pet was actually added in mem.
 	if len(standardStoreRPCService.store.pets) != 2 {
 		t.Fatal("expect 2 pets")
 	}
 
-	r := make(map[string]interface{})
-	discoverRes := StandardDiscoverRes(r)
-
-	err = client.Call("petstore.Discover", "", &discoverRes)
+	// Call the RPC Discover method.
+	dreply := json.RawMessage{}
+	err = client.Call("rpc.Discover", "none", &dreply)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	b, err := json.MarshalIndent(discoverRes, "", "  ")
+	// Log for visibility
+	t.Log(string(dreply))
+	err = ioutil.WriteFile(filepath.Join("generated", "standard.json"), dreply, os.ModePerm)
 	if err != nil {
 		t.Fatal(err)
 	}
-
-	fmt.Println(string(b))
 
 	// Test that the reply marshals back into our datatype with field values' equivalence confirmed.
 	check := &goopenrpcT.OpenRPCSpec1{}
-	err = json.Unmarshal(b, check)
+	err = json.Unmarshal(dreply, check)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	// TOIMPROVE
+	// TODO: Deeper and more complete tests that the OpenRPC API description document
+	// contains the elements we expect.
 	if len(check.Methods) != len([]string{"AddPet", "Discover", "GetPets"}) {
 		t.Error(len(check.Methods))
 	}
-	if check.Methods[0].Name != "AddPet" {
-		t.Error("want methods[0].Name = AddPet")
+	if n := check.Methods[0].Name; n != "PetStore.AddPet" {
+		t.Error("want methods[0].Name = AddPet, got", n)
 	}
 
 }
