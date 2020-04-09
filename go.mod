@@ -1,4 +1,4 @@
-module github.com/whilei/openrpc-go-petstore
+module github.com/etclabscore/go-openrpc-petstore
 
 go 1.13
 
