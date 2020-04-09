@@ -4,7 +4,7 @@ import (
 	"net"
 	"testing"
 
-	openRPCDoc "github.com/etclabscore/openrpc-go-document"
+	openRPCDoc "github.com/etclabscore/go-openrpc-reflect"
 	"github.com/ethereum/go-ethereum/rpc"
 	goopenrpcT "github.com/gregdhill/go-openrpc/types"
 )

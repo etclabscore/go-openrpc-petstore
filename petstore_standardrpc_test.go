@@ -11,7 +11,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	openRPCDoc "github.com/etclabscore/openrpc-go-document"
+	openRPCDoc "github.com/etclabscore/go-openrpc-reflect"
 	goopenrpcT "github.com/gregdhill/go-openrpc/types"
 )
 
