@@ -13,7 +13,7 @@
       "name": "",
       "url": ""
     },
-    "version": "v0.0.0-beta-2020-04-08T12:22:37-05:00-1586366557"
+    "version": "v0.0.0-beta-2020-04-09T06:03:46-05:00-1586430226"
   },
   "servers": [],
   "methods": [
@@ -24,13 +24,13 @@
       "description": "```go\n// AddPet adds a pet to the petStoreService.\nfunc (s *PetStoreStandardRPCService) AddPet(arg AddPetArg, response *AddPetRes) (err error) {\n\terr = s.store.AddPet(Pet(arg))\n\tif err != nil {\n\t\treturn err\n\t}\n\tresponse = (*AddPetRes)(\u0026arg)\n\treturn nil\n}\n```",
       "externalDocs": {
         "description": "line=29",
-        "url": "file:///home/ia/dev/whilei/openrpc-go-petstore/petstore_standardrpc.go"
+        "url": "file:///home/ia/go/src/github.com/etclabscore/go-openrpc-petstore/petstore_standardrpc.go"
       },
       "params": [
         {
           "name": "arg",
           "summary": "",
-          "description": "```go\ngithub.com/whilei/openrpc-go-petstore.AddPetArg\n```",
+          "description": "```go\ngithub.com/etclabscore/go-openrpc-petstore.AddPetArg\n```",
           "required": true,
           "deprecated": false,
           "schema": {
@@ -56,7 +56,7 @@
       "result": {
         "name": "response",
         "summary": "",
-        "description": "```go\ngithub.com/whilei/openrpc-go-petstore.*AddPetRes\n```",
+        "description": "```go\ngithub.com/etclabscore/go-openrpc-petstore.*AddPetRes\n```",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -99,17 +99,17 @@
       "description": "```go\n// GetPets returns all the pets the petStoreService has.\nfunc (s *PetStoreStandardRPCService) GetPets(arg GetPetsArg, response *GetPetsRes) error {\n\tres, err := s.store.GetPets()\n\tif err != nil {\n\t\treturn err\n\t}\n\n\tresponse = (*GetPetsRes)(\u0026res)\n\treturn nil\n}\n```",
       "externalDocs": {
         "description": "line=16",
-        "url": "file:///home/ia/dev/whilei/openrpc-go-petstore/petstore_standardrpc.go"
+        "url": "file:///home/ia/go/src/github.com/etclabscore/go-openrpc-petstore/petstore_standardrpc.go"
       },
       "params": [
         {
           "name": "arg",
           "summary": "",
-          "description": "```go\ngithub.com/whilei/openrpc-go-petstore.GetPetsArg\n```",
+          "description": "```go\ngithub.com/etclabscore/go-openrpc-petstore.GetPetsArg\n```",
           "required": true,
           "deprecated": false,
           "schema": {
-            "description": "github.com/whilei/openrpc-go-petstore.GetPetsArg",
+            "description": "github.com/etclabscore/go-openrpc-petstore.GetPetsArg",
             "type": "string"
           }
         }
@@ -117,13 +117,13 @@
       "result": {
         "name": "response",
         "summary": "",
-        "description": "```go\ngithub.com/whilei/openrpc-go-petstore.*GetPetsRes\n```",
+        "description": "```go\ngithub.com/etclabscore/go-openrpc-petstore.*GetPetsRes\n```",
         "required": true,
         "deprecated": false,
         "schema": {
           "oneOf": [
             {
-              "description": "github.com/whilei/openrpc-go-petstore.*GetPetsRes",
+              "description": "github.com/etclabscore/go-openrpc-petstore.*GetPetsRes",
               "type": "array",
               "items": {
                 "type": "object",
@@ -164,13 +164,13 @@
       "description": "```go\n// RegisterPetOwner registers a pet to an owner.\nfunc (s *PetStoreStandardRPCService) RegisterPetOwner(args RegisterPetOwnerArgs, res *RegisterPetOwnerRes) error {\n\n\ts.store.RegisterPetOwner(args.OwnerName, args.Pet)\n\n\treturn nil\n}\n```",
       "externalDocs": {
         "description": "line=52",
-        "url": "file:///home/ia/dev/whilei/openrpc-go-petstore/petstore_standardrpc.go"
+        "url": "file:///home/ia/go/src/github.com/etclabscore/go-openrpc-petstore/petstore_standardrpc.go"
       },
       "params": [
         {
           "name": "args",
           "summary": "",
-          "description": "```go\ngithub.com/whilei/openrpc-go-petstore.RegisterPetOwnerArgs\n```",
+          "description": "```go\ngithub.com/etclabscore/go-openrpc-petstore.RegisterPetOwnerArgs\n```",
           "required": true,
           "deprecated": false,
           "schema": {
@@ -205,7 +205,7 @@
       "result": {
         "name": "res",
         "summary": "",
-        "description": "```go\ngithub.com/whilei/openrpc-go-petstore.*RegisterPetOwnerRes\n```",
+        "description": "```go\ngithub.com/etclabscore/go-openrpc-petstore.*RegisterPetOwnerRes\n```",
         "required": true,
         "deprecated": false,
         "schema": {

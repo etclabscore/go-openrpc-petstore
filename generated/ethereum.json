@@ -17,7 +17,7 @@
     },
     "termsOfService": "https://google.com/rtfm",
     "title": "My Ethereum-Style Petstore Service",
-    "version": "v0.0.0-beta-2020-04-08T12:22:37-05:00-1586366557"
+    "version": "v0.0.0-beta-2020-04-09T06:03:46-05:00-1586430226"
   },
   "methods": [
     {
@@ -27,7 +27,7 @@
       "examples": [],
       "externalDocs": {
         "description": "line=24",
-        "url": "file:///home/ia/dev/whilei/openrpc-go-petstore/petstore.go"
+        "url": "file:///home/ia/go/src/github.com/etclabscore/go-openrpc-petstore/petstore.go"
       },
       "links": [],
       "name": "petStore_addPet",
@@ -35,7 +35,7 @@
       "params": [
         {
           "deprecated": false,
-          "description": "```go\ngithub.com/whilei/openrpc-go-petstore.Pet\n```",
+          "description": "```go\ngithub.com/etclabscore/go-openrpc-petstore.Pet\n```",
           "name": "newPet",
           "required": true,
           "schema": {
@@ -80,7 +80,7 @@
       "examples": [],
       "externalDocs": {
         "description": "line=20",
-        "url": "file:///home/ia/dev/whilei/openrpc-go-petstore/petstore.go"
+        "url": "file:///home/ia/go/src/github.com/etclabscore/go-openrpc-petstore/petstore.go"
       },
       "links": [],
       "name": "petStore_getPets",
@@ -89,7 +89,7 @@
       "result": {
         "deprecated": false,
         "description": "```go\n\n```",
-        "name": "\u0026{%!s(token.Pos=263) \u003cnil\u003e %!s(*ast.StarExpr=\u0026{265 0xc000192560})}",
+        "name": "\u0026{%!s(token.Pos=263) \u003cnil\u003e %!s(*ast.StarExpr=\u0026{265 0xc00000fac0})}",
         "required": true,
         "schema": {
           "oneOf": [
@@ -132,7 +132,7 @@
       "examples": [],
       "externalDocs": {
         "description": "line=44",
-        "url": "file:///home/ia/dev/whilei/openrpc-go-petstore/petstore.go"
+        "url": "file:///home/ia/go/src/github.com/etclabscore/go-openrpc-petstore/petstore.go"
       },
       "links": [],
       "name": "petStore_registerPetOwner",
@@ -151,7 +151,7 @@
         },
         {
           "deprecated": false,
-          "description": "```go\ngithub.com/whilei/openrpc-go-petstore.Pet\n```",
+          "description": "```go\ngithub.com/etclabscore/go-openrpc-petstore.Pet\n```",
           "name": "pet",
           "required": true,
           "schema": {
@@ -177,7 +177,7 @@
       ],
       "result": {
         "deprecated": false,
-        "description": "```go\ngithub.com/whilei/openrpc-go-petstore.Pet\n```",
+        "description": "```go\ngithub.com/etclabscore/go-openrpc-petstore.Pet\n```",
         "name": "response",
         "required": true,
         "schema": {
@@ -211,7 +211,7 @@
       "examples": [],
       "externalDocs": {
         "description": "line=34",
-        "url": "file:///home/ia/dev/whilei/openrpc-go-petstore/petstore.go"
+        "url": "file:///home/ia/go/src/github.com/etclabscore/go-openrpc-petstore/petstore.go"
       },
       "links": [],
       "name": "petStore_tryUpdatePet",
@@ -219,7 +219,7 @@
       "params": [
         {
           "deprecated": false,
-          "description": "```go\ngithub.com/whilei/openrpc-go-petstore.Pet\n```",
+          "description": "```go\ngithub.com/etclabscore/go-openrpc-petstore.Pet\n```",
           "name": "pet",
           "required": true,
           "schema": {
